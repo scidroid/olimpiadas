@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<main class="min-h-screen flex items-center justify-center bg-slate-50 p-4">
+  <div class="shadow-lg rounded-lg bg-white">
+    <div class="bg-gray-50 px-6 py-2">
+      <div class="text-lg text-center text-gray-700 uppercase">Resultados para {{ category }}</div>
+    </div>
+    <table class="w-full text-sm border-collapse bg-white">
+      <thead class="text-xs text-gray-700 uppercase">
+        <tr>
+          <th scope="col" class="px-6 py-3 border border-gray-200">Puesto</th>
+          <th scope="col" class="px-6 py-3 border border-gray-200">Nombre</th>
+          <th scope="col" class="px-6 py-3 border border-gray-200">Puntaje</th>
+          <th scope="col" class="px-6 py-3 border border-gray-200">Tiempo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(nums) %}
+          <tr class="{{ 'bg-gray-50' if loop.index % 2 == 0 else 'bg-white' }} hover:bg-gray-100 transition-colors duration-150">
+            <td class="px-6 py-3 border border-gray-200">{{ i + 1 }}</td>
+            <td class="px-6 py-3 border border-gray-200">{{ data[i]["course"] + " - " + data[i]["name"] }}</td>
+            <td class="px-6 py-3 border border-gray-200">{{ data[i]["score"] }}</td>
+            <td class="px-6 py-3 border border-gray-200">{{ data[i]["time"] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}
